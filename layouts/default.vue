@@ -5,58 +5,43 @@
 </template>
 
 <style>
-html {
-  font-family:
-    'Source Sans Pro',
-    -apple-system,
-    BlinkMacSystemFont,
-    'Segoe UI',
-    Roboto,
-    'Helvetica Neue',
-    Arial,
-    sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+* {
+  padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
+.name {
+  width: 100%;
 }
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+.view {
+  width: 100%;
+  height: 8%;
 }
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+.control {
+  width: 100%;
 }
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.control button {
+  width: 50px;
+}
+.container {
+  height: 100vh;
+  padding: 10px;
+  display: flex;
+  width: 100%;
+  border: 3px solid black;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  background-color: antiquewhite;
+  text-align: center;
+}
+.container.child {
+  height: 65%;
+  width: 50%;
+  background-color: wheat;
+}
+.container.child.grandchild {
+  height: 55%;
+  width: 50%;
+  background-color: lightsalmon;
 }
 </style>
