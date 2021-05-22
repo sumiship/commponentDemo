@@ -9,23 +9,28 @@
       <button @click="brotherView(name)">兄弟</button>
     </div>
     <Grandchild1-1
+      :named="named1_1"
       ref="child"
       @grandparent="parent($event)"
       @grandbrother="grandbrother($event)"
+      @granRename="granRename($event)"
     />
     <Grandchild1-2 />
   </div>
 </template>
 <script>
 export default {
-  props: [
-    named
-  ],
+  props: ["named1", "named1_1"],
   data() {
     return {
-      name: "家光",
+      name: this.named1,
       message: ""
     };
+  },
+  watch: {
+    named1: function() {
+      this.name = this.named1;
+    }
   },
   methods: {
     view(name) {
@@ -48,6 +53,9 @@ export default {
     grandbrother(name) {
       this.$emit("grandbrother", name);
       // console.log("go");
+    },
+    granRename(name) {
+      this.$emit("granRename", name);
     }
   }
 };

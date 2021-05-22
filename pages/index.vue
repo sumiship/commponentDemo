@@ -6,16 +6,23 @@
       <button @click="view(name)">自分</button>
       <button @click="childView(name)">子供</button>
       <button @click="grandchildView(name)">孫</button>
+      <input type="text" v-model="name1" />
+      <input type="text" v-model="name2" />
+      <input type="text" v-model="name1_1" />
+      <input type="text" v-model="name2_2" />
     </div>
     <Child1
-      named="aaa"
+      :named1="name1"
+      :named1_1="name1_1"
       ref="child1"
       @parent="view($event)"
       @brother="childView2($event)"
       @grandbrother="grandchildView2($event)"
+      @granRename="granRename($event)"
     />
     <Child2
-      :named='name2'
+      :named2="name2"
+      :named2_2="name2_2"
       ref="child2"
       @parent="view($event)"
       @brother="childView1($event)"
@@ -29,8 +36,10 @@ export default {
     return {
       name: "家康",
       message: "",
-      name1:"家光",
-      name2:"家闇"
+      name1: "家光",
+      name2: "家闇",
+      name1_1: "光太郎",
+      name2_2: "闇太郎"
     };
   },
   methods: {
@@ -63,6 +72,9 @@ export default {
     },
     test() {
       console.log("arrive");
+    },
+    granRename(name) {
+      this.name = name;
     }
   }
 };

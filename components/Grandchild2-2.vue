@@ -11,11 +11,17 @@
 </template>
 <script>
 export default {
+  props: ['named'],
   data() {
     return {
-      name: "闇太郎",
+      name: this.named,
       message: ""
     };
+  },
+  watch: {
+    named: function() {
+      this.name = this.named;
+    }
   },
   methods: {
     view(name) {

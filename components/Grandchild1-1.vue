@@ -2,6 +2,7 @@
   <div class="container child grandchild">
     <div class="name">{{ name }}</div>
     <div class="view">{{ message }}</div>
+    <input type="text" v-model="granpare" />
     <div class="control">
       <button @click="grandparent()">親の親</button>
       <button @click="view(name)">自分</button>
@@ -11,11 +12,21 @@
 </template>
 <script>
 export default {
+  props: ["named"],
   data() {
     return {
-      name: "光太郎",
-      message: ""
+      name: this.named,
+      message: "",
+      granpare: "家康"
     };
+  },
+  watch: {
+    named: function() {
+      this.name = this.named;
+    },
+    granpare: function(){
+      this.$emit("granRename", this.granpare);
+    }
   },
   methods: {
     view(name) {
@@ -32,7 +43,7 @@ export default {
     grandbrother() {
       this.$emit("grandbrother", this.name);
       // console.log("go");
-    }
+    },
   }
 };
 </script>

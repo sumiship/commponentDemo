@@ -10,6 +10,7 @@
     </div>
     <Grandchild2-1 />
     <Grandchild2-2
+      :named='named2_2'
       ref="child"
       @grandparent="parent($event)"
       @grandbrother="grandbrother($event)"
@@ -18,9 +19,15 @@
 </template>
 <script>
 export default {
+  props: ["named2", "named2_2"],
+  watch: {
+    named2: function() {
+      this.name = this.named2;
+    }
+  },
   data() {
     return {
-      name: "家闇",
+      name: this.named2,
       message: ""
     };
   },
@@ -45,7 +52,7 @@ export default {
     grandbrother(name) {
       this.$emit("grandbrother", name);
       // console.log("go");
-    },
+    }
   }
 };
 </script>
